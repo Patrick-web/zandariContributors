@@ -3,19 +3,22 @@
 
       <navBar/>
       <tutorials/>
+      <activityPane/>
 </div>
 </template>
 
 <script>
 import tutorials from './views/tutorials';
 import navBar from './components/navBar';
+import activityPane from './components/activityPane';
 
 export default {
   name: 'App',
 
   components: {
     navBar,
-    tutorials
+    tutorials,
+    activityPane
   },
 
   data: () => ({
