@@ -2,13 +2,19 @@
 <div class="wrapper">
 
       <navBar/>
-      <tutorials/>
+      <!-- <tutorials/> -->
+      <!-- <dependancies/> -->
+      <!-- <books/> -->
+      <links/>
       <activityPane/>
 </div>
 </template>
 
 <script>
 import tutorials from './views/tutorials';
+import books from './views/books';
+import dependancies from './views/dependancies';
+import links from './views/links';
 import navBar from './components/navBar';
 import activityPane from './components/activityPane';
 
@@ -18,6 +24,9 @@ export default {
   components: {
     navBar,
     tutorials,
+    dependancies,
+    books,
+    links,
     activityPane
   },
 

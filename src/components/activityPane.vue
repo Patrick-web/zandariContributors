@@ -1,6 +1,9 @@
 <template>
   <div id="pane">
-    <div class="paneTitle">Activity</div>
+    <div class="paneTitle"> 
+      <img src="@/assets/clock.svg" alt="">
+      <p>Activity</p>      
+    </div>
     <v-row class="switch">
       <div class="paneTab activePane">
         Videos
@@ -12,22 +15,47 @@
         Books
       </div>
       <div class="paneTab">
-        Weblinks
+        Links
       </div>
     </v-row>
     <v-container class="cards-container">
-      <div  class="card card-video">
-      <p class="videoTitle">Full stack Mongo and Node Todo app</p>        
-      <p class="channel">Program with Erick</p>        
-      <p class="uploadDate">22-08-2020</p>        
-      </div>
+      <v-card  class="card card-video">
+        <p class="videoTitle">Full stack Mongo and Node Todo app</p> 
+        <div class="card-info">
+          <p class="channel">Program with Erick</p>        
+          <p class="uploadDate">22-08-2020</p>      
+        </div>       
+        <div class="timeline">
+          <div class="elipse"></div>  
+          <div class="line"></div>  
+        </div>  
+      </v-card>
+      <v-card  class="card card-video">
+        <p class="videoTitle">Full stack Mongo and Node Todo app</p> 
+        <div class="card-info">
+          <p class="channel">Program with Erick</p>        
+          <p class="uploadDate">22-08-2020</p>      
+        </div>       
+        <div class="timeline">
+          <div class="elipse"></div>  
+          <div class="line"></div>  
+        </div>  
+      </v-card>
+
     </v-container>
   </div>
 </template>
 
 <script>
 export default {
-
+  created(){
+    setTimeout(()=>{
+    const lines = Array.from(document.querySelectorAll('.line'));
+    const lastLine = lines.length - 1;
+    console.log(lines[0]);
+    lines[lastLine].style.height = '0px';
+    },0)
+  }
 }
 </script>
 
@@ -39,22 +67,26 @@ export default {
     width: 320px;
     height: 100vh;
     background: white;
-    box-shadow: 0px 0px 2px 3px rgba(128, 128, 128, 0.226);
-    
+    box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.137);
 }
 .paneTitle{
   background: var(--primary-color);
   color: white;
-  text-align: center;
-  width: 10vw;
+  width: 100%;
   padding: 5px;
-  font-size: 1.3em;
-  border-radius: 30px !important;
-  margin: auto;
-  margin-top: 5px;
+  font-size: 1.4em;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-weight: 600;
 }
-.paneTab img{
-  width: 50%;
+.paneTitle img{
+  width: 10%;
+  margin-right: 10px;
+}
+.cards-container{
+    overflow: hidden;
+    padding-bottom: 0px;
 }
 .switch{
   font-size: 1em;
@@ -69,72 +101,98 @@ export default {
   height: 40px;
 }
 .paneTab{
-  background: rgb(38, 139, 206);
-  color: rgb(248, 248, 248);
-  padding: 6px;
+  color: rgb(59, 59, 59);
+  background: white;
+  box-shadow: 0px 0px  1px 1px rgb(235, 235, 235);
+  padding: 5px;
   text-align: center;
   margin: 5px;
   position: relative;
   border-radius: 20px;
   z-index: 1;
+  overflow: hidden;
+  transition: 0.1s;
 }
-.paneTab::before{
-  z-index: -1;
-  border-radius: 20px;
-  content: '';
-  position: absolute;
-  top:0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transform: scaleY(0) scaleX(0);
-  transform-origin: center;
-  background: var(--primary-color);
-  transition: 0.2s transform ease;
-}
+
 .activePane{
 
 }
 .paneTab:hover{
   color: white;
   border: none;
-  
+  background: rgb(0, 183, 255);
   cursor: pointer;
+
 }
-.paneTab:hover::before{
-  transform: scaleY(1) scaleX(1);
-}
+
 .card{
-  padding: 10px;
+  padding: 7px;
   position: relative;
-  background: rgb(0, 205, 110) !important;
-  color: rgb(255, 255, 255) !important;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 100;
-  height: 12vh;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: 5px solid rgb(0, 245, 143);
+  background: rgba(0, 0, 0, 0.021) !important;
+  color: rgb(85, 83, 83) !important;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+  font-weight: 100 !important;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-radius: 6px !important;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.123) !important;
+  border-left: 0px solid rgb(19, 216, 157);
+  transition: 0.4s;
+  border-left: 3px solid rgba(19, 216, 157, 0) !important;
+  border-right: 3px solid rgba(19, 216, 157, 0) !important;
+
 }
+.card:hover{
+  border-left: 3px solid rgb(19, 216, 157) !important;
+  border-right: 3px solid rgb(19, 216, 157) !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.123) !important;
+
+}
+
+.card:hover .elipse{
+  background: rgb(19, 216, 157);
+  border-top-left-radius: 0px;
+}
+.card:hover .line{
+  /* background:linear-gradient(rgb(19, 216, 157),rgb(231, 5, 73)) ; */
+}
+
 .channel,.uploadDate{
   font-size: 0.9em;
 }
-.videoTitle{
-  position: absolute;
-  top:5px;
-  left: 10px;
-  font-weight: 300;
+.card-info{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
-.uploadDate{
-  font-weight: 300;
+
+.timeline{
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  left:-35px;
+  top:35%;
+  z-index: 3;
+  height: 30px;
+  width: 30px;
 }
-.channel{
-  font-weight: 300;
-  position: absolute;
-  bottom: 5px;
-  left: 10px;
+.elipse{
+  border-radius: 100%;
+  background: rgb(255, 0, 119);
+  transition: 0.4s;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  margin-bottom: -5px;
+  z-index: 3;
+  position: relative;
+}
+.line{
+  background:rgb(255, 0, 119);
+  width: 1px;
+  transition: 0.2s;
+  height: 100px;
+  border-radius: 5px;
+  margin: auto;
 }
 </style>

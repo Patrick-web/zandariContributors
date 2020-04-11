@@ -1,4 +1,5 @@
 <template>
+<div data-app>
   <v-card class="form">
     <form action="">
       <div class="formTitle">
@@ -11,7 +12,7 @@
         <div class="fgroup">
           <v-select
           class="selectDiv"
-          :items="items"
+          :items="categories"
           label="Category"
           filled
           color="#2196F3"
@@ -20,7 +21,7 @@
         <div class="fgroup">
           <v-select
           class="selectDiv"
-          :items="items"
+          :items="categories"
           label="Area"
           filled
           color="#2196F3"
@@ -29,7 +30,7 @@
         <div class="fgroup">
           <v-select
           class="selectDiv"
-          :items="items"
+          :items="categories"
           label="Type"
           filled
           color="#2196F3"
@@ -38,27 +39,24 @@
         <div class="fgroup">
           <v-select
           class="selectDiv"
-          :items="items"
+          :items="categories"
           label="Study Point"
           filled
           color="#2196F3"
           ></v-select>
         </div>
-        <div class="fgroup">
+        <div class="fgroup" style="margin-bottom:-10px">
             <v-text-field color="#2196F3" label="Add Tag"></v-text-field>
         </div>
       </div>
-      <v-row  align="center" style="margin:auto;width:100%" class="formActions">
+      <v-row  align="center" style="margin:auto;width:100%;padding-bottom:10px" class="formActions">
         <v-col align="center">
-        <v-btn rounded color="#2196F3" style="color:white" >Preview</v-btn>
-        </v-col>
-        <v-col align="center">
-        <v-btn rounded color="#2196F3" style="color:white"  >Upload</v-btn>
-
+        <v-btn rounded color="#2196F3" style="color:white;margin-bottom:10px"  >Upload</v-btn>
         </v-col>
       </v-row>
     </form>
   </v-card>
+  </div> 
 </template>
 
 <script>
@@ -67,14 +65,26 @@
 export default {
   name: 'tutorials',
   data: () => ({
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      categories: ['Foo', 'Bar', 'Fizz', 'Buzz'],
   }),
   components: {
+  },
+  created(){
+  setTimeout(()=>{
+      let inputs = Array.from(document.querySelectorAll('input'))
+      inputs.forEach((inputer,index)=>{
+      inputer.addEventListener('keydown',(e)=>{
+        if(e.key == 'Enter'){
+          inputs[index+1].focus();
+        }
+      })
+    })  
+  },0)
   }
 }
 </script>
 
-<style>
+<style scoped>
   .formTitle{
     background: var(--primary-color);
     color: white;
@@ -145,7 +155,7 @@ export default {
     bottom: 2px;
   }
   .selectDiv{
-    border-radius: 30px;
+    /* border-radius: 30px; */
   }
 
 
