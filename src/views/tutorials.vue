@@ -1,5 +1,5 @@
 <template>
-<div data-app>
+<div>
   <v-card class="form">
     <form action="">
       <div class="formTitle">
@@ -45,15 +45,15 @@
           color="#2196F3"
           ></v-select>
         </div>
-        <div class="fgroup" style="margin-bottom:-10px">
+        <div class="fgroup getUp" >
             <v-text-field color="#2196F3" label="Add Tag"></v-text-field>
         </div>
-      </div>
       <v-row  align="center" style="margin:auto;width:100%;padding-bottom:10px" class="formActions">
         <v-col align="center">
-        <v-btn rounded color="#2196F3" style="color:white;margin-bottom:10px"  >Upload</v-btn>
+        <v-btn rounded color="#2196F3" style="color:white;margin-bottom:10px"  >Preview</v-btn>
         </v-col>
       </v-row>
+      </div>
     </form>
   </v-card>
   </div> 
@@ -84,20 +84,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .formTitle{
     background: var(--primary-color);
     color: white;
     height: 40px;
     padding: 8px;
-    width: 18vh;
-    min-width: 110px;
     font-size: 1.25em;
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
     margin-top: -20px;
-    margin-left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 30px;
     box-shadow: 0px 0px 3px 2px rgba(148, 148, 148, 0.212);
     
@@ -107,7 +106,6 @@ export default {
     margin-left:8.7vw;
     margin-top: 1.8rem;
     width: 30vw;
-    min-width: 500px;
     background: rgb(255, 255, 255);
     border-radius: 10px;
   }
@@ -157,6 +155,21 @@ export default {
   .selectDiv{
     /* border-radius: 30px; */
   }
+@media screen and (max-width:700px ) {
 
+  .form{
+    width:93.5vw;
+    height: auto;
+    margin-left: 12px;
+    display: none;
+  }
+  .fgroup{
+    margin-top: -5px;
+    margin-bottom: 0px;
+  }
+  .getUp{
+    margin-top: -25px;
+  }
+}
 
 </style>

@@ -1,11 +1,15 @@
 <template>
-<div class="wrapper">
+<div data-app class="wrapper">
 
       <navBar/>
-      <!-- <tutorials/> -->
-      <!-- <dependancies/> -->
-      <!-- <books/> -->
-      <links/>
+      <div class="forms">
+        <div class="viewsWrapper">
+          <tutorials class="view"/>
+          <dependancies class="view"/>
+          <books class="view"/>
+          <links class="view"/>
+        </div>
+      </div>
       <activityPane/>
 </div>
 </template>
@@ -33,6 +37,10 @@ export default {
   data: () => ({
     //
   }),
+  created(){
+    setTimeout(()=>{
+    })
+  }
 };
 </script>
 <style>
@@ -52,5 +60,32 @@ export default {
 }
 body{
   background: var(--lightWhite);
+}
+.forms{
+  height: 100vh;
+  /* background: black; */
+  overflow-y: hidden;
+  position: relative;
+}
+.viewsWrapper{
+  top:0%;
+  position: absolute;
+  transition: 0.4s ease-in-out;
+}
+.view{
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width:700px ) {
+  .forms{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 98vw;
+    
+  }
+  .viewsWrapper{
+    display: flex;
+    transition: 0.15s linear;
+  }
 }
 </style>
